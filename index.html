@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Tilt Prism:400,500,600,700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="./Images/parking.svg" type="icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <title>Parking Service</title>
+</head>
+<style>
+    * {
+        font-family: 'Tilt Prism', sans-serif;
+        font-weight: bolder;
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        background-image: url(./Images/low-poly-grid-haikei.svg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+    }
+
+    header {
+        background-color: orangered;
+        padding: 1rem;
+    }
+
+    #header-logo {
+        width: 144px;
+        height: 84px;
+        padding-bottom: 20px;
+    }
+
+    #header-msg {
+        font-size: 2.5rem;
+        font-weight: bolder;
+        font-family: 'Tilt Prism', sans-serif;
+        color: black;
+        margin-left: 1rem;
+    }
+
+    #btnOne {
+        background-color: #000000;
+        color: white;
+        border-radius: 0.5rem;
+        box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.2);
+        padding: 0.5rem 1rem;
+        transition: all 0.3s ease-in-out;
+    }
+
+    #btnOne:focus,
+    #btnOne:hover {
+        box-shadow: none;
+        outline: none;
+        transform: translateY(-0.1rem);
+        background-color: orangered;
+    }
+
+    #tableHead {
+        background-color: rgb(25, 120, 197);
+        color: white;
+    }
+
+    .form-container {
+        padding: 2rem;
+        background-color: orangered;
+        border-radius: 1rem;
+        box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.2);
+    }
+
+    .form-group {
+        margin-bottom: 1rem;
+    }
+
+    .form-control {
+        border-radius: 0.5rem;
+        font-weight: bolder;
+        box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease-in-out;
+    }
+
+    .form-control:focus {
+        box-shadow: none;
+        outline: none;
+        border-color: orangered;
+    }
+
+    .table-container {
+        background-color: orangered;
+        border-radius: 1rem;
+        box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.2);
+        padding: 0.5rem;
+    }
+
+    .table {
+        border-radius: 0.5rem;
+        box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.2);
+        background-color: orange;
+    }
+
+    .table-striped tbody tr:nth-of-type(odd) {
+        background-color: #f5f5f5;
+    }
+
+    .table td,
+    .table th {
+        border-radius: 0.3rem;
+        padding: 0.5rem;
+        background-color: beige;
+        gap: 10px;
+    }
+
+    .table td:last-child {
+        text-align: center;
+    }
+
+    .table td:last-child button {
+        background-color: transparent;
+        border: none;
+        color: orangered;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .table td:last-child button:hover {
+        color: #1c8adb;
+    }
+
+    footer {
+        background-color: orangered;
+        padding: 0.5rem;
+
+    }
+    #footer-msg {
+        text-align: center;
+        font-size: 2.5rem;
+        font-weight: bolder;
+        font-family: 'Tilt Prism', sans-serif;
+        color: black;
+        margin: 27.4rem;
+        align-items: center;
+    }
+ 
+    footer ul {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        list-style: none;
+        gap: 1rem;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    footer li {
+        display: inline-block;
+        margin: 0 10px;
+    }
+
+    footer a {
+        color: #000000;
+        text-decoration: none;
+    }
+
+    footer a:hover {
+        color: #999;
+    }
+
+    @media screen and (max-width: 768px) {
+        footer ul {
+            flex-direction: column;
+        }
+
+        footer li {
+            margin: 10px 0;
+        }
+    }
+</style>
+
+<header>
+    <img id="header-logo" src="Images/car.svg" alt="Parking Lot Logo">
+    <span id="header-msg">24/7 Parking Service</span>
+</header>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-container">
+                <form id="myForm">
+                    <div class="form-group">
+                        <label for="ownerName">Owner Name</label>
+                        <input type="text" class="form-control" id="ownerName"
+                            placeholder="--------------------------------------------------" name="ownerName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="carModel">Car Model</label>
+                        <input type="text" class="form-control" id="carModel"
+                            placeholder="--------------------------------------------------" name="carModel" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phoneNumber">Phone Number</label>
+                        <input type="text" class="form-control" id="phoneNumber"
+                            placeholder="--------------------------------------------------" name="PhoneNumber"
+                            required>
+                    </div>
+                    <div class="form-group">
+                        <label for="licensePlate">License Plate Number</label>
+                        <input type="text" class="form-control" id="licensePlate"
+                            placeholder="--------------------------------------------------" name="licensePlate"
+                            required>
+                    </div>
+                    <div class="form-group">
+                        <label for="entryTime">Entry Date/Time</label>
+                        <input type="datetime-local" class="form-control" id="entryTime"
+                            placeholder="--------------------------------------------------" name="entryTime" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="exitTime">Exit Date/Time</label>
+                        <input type="datetime-local" class="form-control" id="exitTime"
+                            placeholder="--------------------------------------------------" name="exitTime" required>
+                    </div>
+                    <button type="submit" id="btnOne">Add Car</button>
+                </form>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="table-container" id="table">
+                <table class="table table-striped" id="myTable">
+                    <thead>
+                        <tr id="tableHead">
+                            <th>Owner Name</th>
+                            <th>Car Model</th>
+                            <th>Phone Number</th>
+                            <th>License Plate Number</th>
+                            <th>Entry Date/Time</th>
+                            <th>Exit Date/Time</th>
+                            <th>initial-Cost</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+
+<footer>
+    <span id="footer-msg">24/7 Parking Service</span>
+    <ul>
+        <li><a href="#">Terms of Service</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Contact Us</a></li>
+    </ul>
+</footer>
+<script>
+    // Get the form and table elements
+    const carForm = document.getElementById('myForm');
+    const carTableBody = document.getElementById('myTable');
+
+    // Add an event listener to the form submit button
+    carForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        // Get the form input values
+        const ownerName = document.getElementById('ownerName').value;
+        const carModel = document.getElementById('carModel').value;
+        const phoneNumber = document.getElementById('phoneNumber').value;
+        const licensePlate = document.getElementById('licensePlate').value;
+        const entryTime = document.getElementById('entryTime').value;
+        const exitTime = document.getElementById('exitTime').value;
+
+        // Validate form input values
+        if (ownerName === '' || carModel === '' || phoneNumber === '' || licensePlate === '' || entryTime === '' || exitTime === '') {
+            alert('Please fill in all fields');
+        } else {
+            // Create a new row in the table   
+            const newRow = document.createElement('tr');
+            // Create new cells in the row
+            const cell1 = document.createElement('td');
+            const cell2 = document.createElement('td');
+            const cell3 = document.createElement('td');
+            const cell4 = document.createElement('td');
+            const cell5 = document.createElement('td');
+            const cell6 = document.createElement('td');
+            const cell7 = document.createElement('td');
+            const cell8 = document.createElement('td');
+            // Add the values from the form to the cells
+            cell1.innerHTML = ownerName;
+            cell2.innerHTML = carModel;
+            cell3.innerHTML = phoneNumber;
+            cell4.innerHTML = licensePlate;
+            cell5.innerHTML = entryTime;
+            cell6.innerHTML = exitTime;
+            cell7.innerHTML = '150';
+            cell8.innerHTML = '<button class="btn btn-danger" style="font-weight: bolder;" onclick="deleteRow(this)">Delete</button>';
+            // Add the cells to the row
+            newRow.appendChild(cell1);
+            newRow.appendChild(cell2);
+            newRow.appendChild(cell3);
+            newRow.appendChild(cell4);
+            newRow.appendChild(cell5);
+            newRow.appendChild(cell6);
+            newRow.appendChild(cell7);
+            newRow.appendChild(cell8);
+            // Add the row to the table body
+            carTableBody.appendChild(newRow);
+            // Clear the form
+            carForm.reset();
+        }
+    });
+
+    // while delete button is clicked display cost. Cost being 150 per hour
+    function deleteRow(row) {
+        var table = document.getElementById("myTable");
+        var i = row.parentNode.parentNode.rowIndex;
+        table.deleteRow(i);
+    }
+</script>
+</html>
